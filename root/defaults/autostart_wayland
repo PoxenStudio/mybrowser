@@ -1,2 +1,9 @@
 #!/bin/bash
+
+# Desktop wallpaper, shown behind the browser (e.g. before it is fullscreen,
+# or after it is closed). Override with -e BACKGROUND_PNG=/path/to/image.png
+if [ -n "${BACKGROUND_PNG}" ] && [ -f "${BACKGROUND_PNG}" ]; then
+  swaybg -i "${BACKGROUND_PNG}" -m center -c "#1e1e1e" &
+fi
+
 wrapped-browser --enable-features=UseOzonePlatform --ozone-platform=wayland ${BROWSER_CLI}

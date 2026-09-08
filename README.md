@@ -6,6 +6,18 @@
 
 [![MyBrowser](doc/mybrowser-logo.png)](https://poxen.top/)
 
+
+## Building Instruction
+```
+make arm64 VERSION=1.0.0
+make amd64 VERSION=1.0.0
+```
+
+Run the container for testing:
+```
+docker run -d --name=mybrowser -p 3001:3001 --shm-size=2gb --restart unless-stopped poxenstudio/mybrowser:amd64-0.1.0
+```
+
 ## Supported Architectures
 
 The architectures supported by this image are:
@@ -178,6 +190,7 @@ This container is based on [Docker Baseimage Selkies](https://github.com/linuxse
 |      MAX_RES       | Pass a larger maximum resolution for the container default is 16k `15360x8640`                                                                                            |
 |   WATERMARK_PNG    | Full path inside the container to a watermark png IE `/usr/share/selkies/www/icon.png`                                                                                    |
 | WATERMARK_LOCATION | Where to paint the image over the stream integer options below                                                                                                            |
+|   BACKGROUND_PNG   | **Wayland mode only.** Full path inside the container to a desktop wallpaper png, shown behind the browser window. Defaults to the bundled MyBrowser background.         |
 
 **`WATERMARK_LOCATION` Options:**
 

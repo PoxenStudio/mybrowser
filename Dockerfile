@@ -1,18 +1,27 @@
 # syntax=docker/dockerfile:1
 
-FROM ghcr.io/linuxserver/baseimage-selkies:debiantrixie
+FROM ghcr.1ms.run/linuxserver/baseimage-selkies:ubunturesolute
 
 # set version label
 ARG BUILD_DATE
 ARG VERSION
 LABEL build_version="PoxenStudio version:- ${VERSION} Build-date:- ${BUILD_DATE}"
-LABEL maintainer="poxenstudio"
+LABEL maintainer="PoxenStudio"
+LABEL org.opencontainers.image.title="MyBrowser" \
+      org.opencontainers.image.vendor="PoxenStudio" \
+      org.opencontainers.image.source="https://github.com/PoxenStudio/mybrowser"
 
-COPY built/mybrowser-beta_amd64.deb /tmp/mybrowser.deb
+COPY built/poxenstudio-mybrowser-stable_amd64.deb /tmp/mybrowser.deb
+COPY images/default_background.png /usr/share/backgrounds/mybrowser.png
 
 # title
 ENV TITLE=MyBrowser \
-  PIXELFLUX_WAYLAND=true
+  PIXELFLUX_WAYLAND=true \
+  BACKGROUND_PNG=/usr/share/backgrounds/mybrowser.png
+ENV PUID=1000
+ENV PGID=1000
+ENV TZ=Asia/Shanghai
+ENV LANG=C.UTF-8
 
 RUN \
   echo "**** add icon ****" && \
@@ -22,6 +31,7 @@ RUN \
   echo "**** install packages ****" && \
   apt-get update && \
   apt-get install -y --no-install-recommends \
+  swaybg \
   /tmp/mybrowser.deb && \
   echo "**** cleanup ****" && \
   apt-get autoclean && \
@@ -29,7 +39,10 @@ RUN \
   /config/.cache \
   /var/lib/apt/lists/* \
   /var/tmp/* \
-  /tmp/*
+  /tmp/* && \
+  mkdir -p /data/mybrowser && \
+  mkdir -p /data/extensions && \
+  chmod a+w -R /data/
 
 # add local files
 COPY /root /

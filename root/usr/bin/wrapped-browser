@@ -1,0 +1,32 @@
+#!/bin/bash
+
+BIN=/usr/bin/poxenstudio-mybrowser-stable
+
+# Cleanup
+if pgrep mybrowser > /dev/null;then
+  rm -f $HOME/.config/mybrowser/Singleton*
+fi
+
+# Wayland check
+if ls -l /dev/dri/* > /dev/null 2>&1; then
+  if pgrep labwc > /dev/null 2>&1; then
+    WAYLAND="--ozone-platform=wayland"
+  fi
+fi
+
+# Pelorus accessibility
+if [ "${PELORUS,,}" == "true" ]; then
+  ACCESSIBILITY="--force-renderer-accessibility"
+fi
+
+${BIN} \
+  --no-first-run \
+  --no-sandbox \
+  --password-store=basic \
+  --simulate-outdated-no-au='Tue, 31 Dec 2099 23:59:59 GMT' \
+  --start-maximized \
+  --test-type \
+  --user-data-dir='/data/mybrowser' \
+  ${WAYLAND} \
+  ${ACCESSIBILITY} \
+   "$@" > /dev/null 2>&1
