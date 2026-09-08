@@ -8,11 +8,15 @@
   <a href="https://poxen.top/"><img src="doc/mybrowser-logo.png" alt="MyBrowser"></a>
 </p>
 
-优化的Chromium浏览器内核和自定义selkies UI，更适合NAS上部署使用。镜像构建基于linuxserver/google-chrome修改。
+优化的Chromium浏览器和自定义selkies UI，更适合NAS上部署使用。镜像构建基于linuxserver/google-chrome修改。
 
 在NAS上部署浏览器后，有哪些作用：
 * 通过反代在公网访问，提供终端工具, 可以访问局域网设备
 * 配置执行一些定时任务
+
+集成的浏览器不是Chrome, 而是基于Chromium修改的版本。功能包括:
+* 优化内存及显存占用
+* 自定义的浏览器功能
 
 
 ## UI
@@ -30,6 +34,30 @@
 <p align="center">
   <img src="doc/context_menu.png" alt="Menu"></a>
 </p>
+
+## 快速使用
+推荐Docker compose部署。
+```yaml
+---
+services:
+  mybrowser:
+    image: poxenstudio/mybrowser:latest
+    container_name: mybrowser
+    restart: unless-stopped
+    ports:
+      - "9001:3001"       # 不允许使用http端口3000, 直接绑定https端口
+    volumes:
+      - ./config:/config  # 用于存放项目配置文件，包括SSL证书等
+      - ./data:/data      # 用于存放浏览器数据、扩展等数据的目录。将扩展上传到data目录就可以在浏览器安装
+    shm_size: "2gb"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - CUSTOM_USER=admin  # 可选，打开时要求进行用户验证
+      - PASSWORD=12456     # 可选，配合CUSTOM_USER, 输入密码才允许使用
+      - CHROME_CLI='https://mybooks.top'   # 启动参数，可以指定打开的页面，也可以指定chrome command line参数
+```
+
 
 ## Building Instruction
 ```
