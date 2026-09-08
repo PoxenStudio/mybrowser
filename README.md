@@ -4,7 +4,9 @@
 
 [MyBrowser](https://poxen.top) is customized built from PoxenStudio, built to be simple for docker eco-system.
 
-[![MyBrowser](doc/mybrowser-logo.png)](https://poxen.top/)
+<p align="center">
+  <a href="https://poxen.top/"><img src="doc/mybrowser-logo.png" alt="MyBrowser"></a>
+</p>
 
 优化的Chromium浏览器内核，自定义selkies应用菜单，更适合NAS上部署使用。镜像构建基于linuxserver/google-chrome修改。
 
@@ -132,6 +134,9 @@ environment:
 services:
   mybrowser:
     image: poxenstudio/mybrowser:latest
+    volumes:
+      # user data and extensions
+      - ./data:/data
     environment:
       - PIXELFLUX_WAYLAND=true
       # Ensure these point to the rendered node injected by the runtime (usually renderD128)
