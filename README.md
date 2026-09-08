@@ -59,18 +59,18 @@ services:
 ```
 
 
-## Building Instruction
+## 构建
 ```
 make arm64 VERSION=1.0.0
 make amd64 VERSION=1.0.0
 ```
 
-Run the container for testing:
+运行一个容器进行测试:
 ```
 docker run -d --name=mybrowser -p 3001:3001 --shm-size=2gb --restart unless-stopped poxenstudio/mybrowser:amd64-0.1.0
 ```
 
-## Supported Architectures
+## 支持的架构
 
 The architectures supported by this image are:
 
@@ -79,11 +79,6 @@ The architectures supported by this image are:
 |    x86-64    |    ✅     | amd64-\<version tag\>   |
 |    arm64     |    ✅     | arm64v8-\<version tag\> |
 
-## Application Setup
-
-The application can be accessed at:
-
-- https://yourhost:3001/
 
 ### Security
 
