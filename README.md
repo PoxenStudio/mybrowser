@@ -6,6 +6,8 @@
 
 [![MyBrowser](doc/mybrowser-logo.png)](https://poxen.top/)
 
+优化的Chromium浏览器内核，自定义selkies应用菜单，更适合NAS上部署使用。镜像构建基于linuxserver/google-chrome修改。
+
 
 ## Building Instruction
 ```
