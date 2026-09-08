@@ -21,12 +21,13 @@ COPY webui/favicon.ico /usr/share/selkies/www/
 ENV TITLE=MyBrowser \
   PIXELFLUX_WAYLAND=true \
   BACKGROUND_PNG=/usr/share/backgrounds/mybrowser.png \
-  DASHBOARD=mybrowser-webui \
-  TITLE=MyBrowser
+  DASHBOARD=mybrowser-webui
+
 ENV PUID=1000
 ENV PGID=1000
 ENV TZ=Asia/Shanghai
-ENV LANG=C.UTF-8
+ENV LANG=zh_CN.UTF-8
+ENV LANGUAGE=zh_CN.UTF-8
 ENV UI_LANG=zh-CN
 
 RUN \
