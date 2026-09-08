@@ -13,21 +13,19 @@ LABEL org.opencontainers.image.title="MyBrowser" \
 
 COPY built/poxenstudio-mybrowser-stable_amd64.deb /tmp/mybrowser.deb
 COPY images/default_background.png /usr/share/backgrounds/mybrowser.png
+COPY webui /usr/share/selkies/mybrowser-webui
 
 # title
 ENV TITLE=MyBrowser \
   PIXELFLUX_WAYLAND=true \
-  BACKGROUND_PNG=/usr/share/backgrounds/mybrowser.png
+  BACKGROUND_PNG=/usr/share/backgrounds/mybrowser.png \
+  DASHBOARD=mybrowser-webui
 ENV PUID=1000
 ENV PGID=1000
 ENV TZ=Asia/Shanghai
 ENV LANG=C.UTF-8
 
 RUN \
-  echo "**** add icon ****" && \
-  curl -o \
-  /usr/share/selkies/www/icon.png \
-  https://raw.githubusercontent.com/PoxenStudio/mybrowser/main/doc/mybrowser-logo.png && \
   echo "**** install packages ****" && \
   apt-get update && \
   apt-get install -y --no-install-recommends \
