@@ -8,8 +8,28 @@
   <a href="https://poxen.top/"><img src="doc/mybrowser-logo.png" alt="MyBrowser"></a>
 </p>
 
-优化的Chromium浏览器内核，自定义selkies应用菜单，更适合NAS上部署使用。镜像构建基于linuxserver/google-chrome修改。
+优化的Chromium浏览器内核和自定义selkies UI，更适合NAS上部署使用。镜像构建基于linuxserver/google-chrome修改。
 
+在NAS上部署浏览器后，有哪些作用：
+* 通过反代在公网访问，提供终端工具, 可以访问局域网设备
+* 配置执行一些定时任务
+
+
+## UI
+连接后默认打开浏览器, 以打开书库服务为例：
+<p align="center">
+  <img src="doc/mybooks_in_mybrowser.jpg" alt="MyBrowser"></a>
+</p>
+
+关闭浏览器后有一个简易桌面:
+<p align="center">
+  <img src="doc/desktop.png" alt="Desktop"></a>
+</p>
+
+右键菜单可以打开终端或者浏览器:
+<p align="center">
+  <img src="doc/context_menu.png" alt="Menu"></a>
+</p>
 
 ## Building Instruction
 ```
