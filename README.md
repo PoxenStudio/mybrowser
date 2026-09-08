@@ -2,7 +2,7 @@
 
 [Chrome](https://www.google.com/chrome/) is the official web browser from Google, built to be fast, secure, and customizable.
 
-[MyBrowser](https://poxen.top) is customized built from PoxenStudio, built to be simple for docker eco-system.
+[MyBrowser](https://poxen.top) 通过Chromium裁剪和定制的浏览器，更适合NAS平台使用。
 
 <p align="center">
   <a href="https://poxen.top/"><img src="doc/mybrowser-logo.png" alt="MyBrowser"></a>
