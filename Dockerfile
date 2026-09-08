@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM docker.1ms.run/poxenstudio/baseimage-selkies:ubunturesolute
+FROM poxenstudio/baseimage-selkies:ubunturesolute
 
 # set version label
 ARG BUILD_DATE
@@ -14,16 +14,20 @@ LABEL org.opencontainers.image.title="MyBrowser" \
 COPY built/poxenstudio-mybrowser-stable_amd64.deb /tmp/mybrowser.deb
 COPY images/default_background.png /usr/share/backgrounds/mybrowser.png
 COPY webui /usr/share/selkies/mybrowser-webui
+COPY webui/icon.png /usr/share/selkies/www/
+COPY webui/favicon.ico /usr/share/selkies/www/
 
 # title
 ENV TITLE=MyBrowser \
   PIXELFLUX_WAYLAND=true \
   BACKGROUND_PNG=/usr/share/backgrounds/mybrowser.png \
-  DASHBOARD=mybrowser-webui
+  DASHBOARD=mybrowser-webui \
+  TITLE=MyBrowser
 ENV PUID=1000
 ENV PGID=1000
 ENV TZ=Asia/Shanghai
 ENV LANG=C.UTF-8
+ENV UI_LANG=zh-CN
 
 RUN \
   echo "**** install packages ****" && \

@@ -19,6 +19,9 @@ if [ "${PELORUS,,}" == "true" ]; then
   ACCESSIBILITY="--force-renderer-accessibility"
 fi
 
+# UI language
+UI_LANG="${UI_LANG:-zh-CN}"
+
 ${BIN} \
   --no-first-run \
   --no-sandbox \
@@ -28,6 +31,7 @@ ${BIN} \
   --test-type \
   --hide-crash-restore-bubble \
   --user-data-dir='/data/mybrowser' \
+  --lang="${UI_LANG}" \
   ${WAYLAND} \
   ${ACCESSIBILITY} \
    "$@" > /dev/null 2>&1

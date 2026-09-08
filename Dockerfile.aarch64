@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM docker.1ms.run/poxenstudio/baseimage-selkies:arm64v8-ubunturesolute
+FROM poxenstudio/baseimage-selkies:arm64v8-ubunturesolute
 
 # set version label
 ARG BUILD_DATE
@@ -17,6 +17,7 @@ ENV TITLE=MyBrowser \
   PIXELFLUX_WAYLAND=true \
   BACKGROUND_PNG=/usr/share/backgrounds/mybrowser.png \
   DASHBOARD=mybrowser-webui
+ENV UI_LANG=zh-CN
 
 RUN \
   echo "**** install packages ****" && \
