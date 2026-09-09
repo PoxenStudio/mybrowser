@@ -17,6 +17,12 @@ ENV TITLE=MyBrowser \
   PIXELFLUX_WAYLAND=true \
   BACKGROUND_PNG=/usr/share/backgrounds/mybrowser.png \
   DASHBOARD=mybrowser-webui
+
+ENV PUID=1000
+ENV PGID=1000
+ENV TZ=Asia/Shanghai
+ENV LANG=zh_CN.UTF-8
+ENV LC_ALL=zh_CN.UTF-8
 ENV UI_LANG=zh-CN
 
 RUN \

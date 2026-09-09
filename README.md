@@ -556,46 +556,6 @@ uid=1000(your_user) gid=1000(your_user) groups=1000(your_user)
   docker inspect -f '{{ index .Config.Labels "build_version" }}' poxenstudio/mybrowser:latest
   ```
 
-## 更新说明
-
-我们的大多数镜像都是静态且带版本号的，更新容器内的应用需要更新镜像并重建容器。除个别例外情况（会在相应 readme.md 中注明）外，我们不建议也不支持在容器内直接更新应用。请参考上文的[应用配置](#application-setup)部分，确认该镜像是否推荐这样做。
-
-以下是更新容器的操作说明：
-
-### 通过 Docker Compose
-
-- 更新镜像：
-  - 更新所有镜像：
-
-    ```bash
-    docker-compose pull
-    ```
-
-  - 更新单个镜像：
-
-    ```bash
-    docker-compose pull mybrowser
-    ```
-
-- 更新容器：
-  - 更新所有容器：
-
-    ```bash
-    docker-compose up -d
-    ```
-
-  - 更新单个容器：
-
-    ```bash
-    docker-compose up -d mybrowser
-    ```
-
-- 你也可以清理旧的悬空镜像：
-
-  ```bash
-  docker image prune
-  ```
-
 ### 通过 Docker Run
 
 - 更新镜像：
