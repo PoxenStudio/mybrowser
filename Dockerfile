@@ -1,17 +1,18 @@
 # syntax=docker/dockerfile:1
 
-FROM poxenstudio/baseimage-selkies:ubunturesolute
+FROM ghcr.io/linuxserver/baseimage-selkies:ubunturesolute
 
 # set version label
 ARG BUILD_DATE
 ARG VERSION
+ARG TARGETARCH
 LABEL build_version="PoxenStudio version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="PoxenStudio"
 LABEL org.opencontainers.image.title="MyBrowser" \
       org.opencontainers.image.vendor="PoxenStudio" \
       org.opencontainers.image.source="https://github.com/PoxenStudio/mybrowser"
 
-COPY built/poxenstudio-mybrowser-stable_amd64.deb /tmp/mybrowser.deb
+COPY built/poxenstudio-mybrowser-stable_${TARGETARCH}.deb /tmp/mybrowser.deb
 COPY images/default_background.png /usr/share/backgrounds/mybrowser.png
 COPY webui /usr/share/selkies/mybrowser-webui
 COPY webui/icon.png /usr/share/selkies/www/
