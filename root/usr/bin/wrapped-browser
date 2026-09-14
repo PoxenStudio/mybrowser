@@ -22,6 +22,15 @@ fi
 # UI language
 UI_LANG="${UI_LANG:-zh-CN}"
 
+# Remote debugging port
+if [ -n "${ENV_REMOTE_INSPECT_PORT}" ]; then
+  if [[ "${ENV_REMOTE_INSPECT_PORT}" =~ ^[0-9]{4,}$ ]] && [ "${ENV_REMOTE_INSPECT_PORT}" -le 65535 ]; then
+    REMOTE_INSPECT="--remote-debugging-port=${ENV_REMOTE_INSPECT_PORT}"
+  else
+    echo "Invalid ENV_REMOTE_INSPECT_PORT: ${ENV_REMOTE_INSPECT_PORT} (must be an integer of 4+ digits, <= 65535)" >&2
+  fi
+fi
+
 ${BIN} \
   --no-first-run \
   --no-sandbox \
@@ -34,4 +43,5 @@ ${BIN} \
   --lang="${UI_LANG}" \
   ${WAYLAND} \
   ${ACCESSIBILITY} \
+  ${REMOTE_INSPECT} \
    "$@" > /dev/null 2>&1
