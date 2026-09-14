@@ -11,6 +11,9 @@ LABEL maintainer="poxenstudio"
 COPY built/poxenstudio-mybrowser-stable_arm64.deb /tmp/mybrowser.deb
 COPY images/default_background.png /usr/share/backgrounds/mybrowser.png
 COPY webui /usr/share/selkies/mybrowser-webui
+COPY webui/icon.png /usr/share/selkies/www/
+COPY webui/favicon.ico /usr/share/selkies/www/
+COPY extensions /
 
 # title
 ENV TITLE=MyBrowser \
@@ -42,8 +45,8 @@ RUN \
   mkdir -p /data/extensions && \
   chmod a+w -R /data/
 
-# add local files
-COPY /root /
+  # add local files
+  COPY /root /
 
 # ports and volumes
 EXPOSE 3001
