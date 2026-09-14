@@ -1,4 +1,4 @@
-MAGE      := poxenstudio/mybrowser
+IMAGE      := poxenstudio/mybrowser
 GIT_BRANCH := $(shell git rev-parse --abbrev-ref HEAD)
 VERSION := $(subst /,-,$(GIT_BRANCH))
 BUILD_DATE := $(shell date -u +'%Y-%m-%dT%H:%M:%SZ')
