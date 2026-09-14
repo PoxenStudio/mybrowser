@@ -86,8 +86,8 @@ docker run -d --name=mybrowser -p 3001:3001 --shm-size=2gb --restart unless-stop
 
 | 架构      | 是否支持 | 标签                     |
 | :----------: | :-------: | ----------------------- |
-|    x86-64    |    ✅     | \<version tag\>   |
-|    arm64     |    ✅     | arm64v8-\<version tag\> |
+|    x86-64    |    ✅     | \<version tag\> 或 latest |
+|    arm64     |    ✅     | \<version tag\> 或 latest |
 
 
 ### 安全性
