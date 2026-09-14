@@ -1,5 +1,6 @@
-IMAGE      := poxenstudio/mybrowser
-VERSION    ?= latest
+MAGE      := poxenstudio/mybrowser
+GIT_BRANCH := $(shell git rev-parse --abbrev-ref HEAD)
+VERSION := $(subst /,-,$(GIT_BRANCH))
 BUILD_DATE := $(shell date -u +'%Y-%m-%dT%H:%M:%SZ')
 
 .PHONY: amd64 arm64
@@ -10,7 +11,7 @@ amd64:
 		--build-arg BUILD_DATE=$(BUILD_DATE) \
 		--build-arg VERSION=$(VERSION) \
 		-f Dockerfile \
-		-t $(IMAGE):amd64-$(VERSION) \
+		-t $(IMAGE):$(VERSION) \
 		.
 
 arm64:
