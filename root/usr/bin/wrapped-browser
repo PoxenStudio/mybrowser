@@ -2,9 +2,9 @@
 
 BIN=/usr/bin/poxenstudio-mybrowser-stable
 
-# Cleanup
-if pgrep mybrowser > /dev/null;then
-  rm -f $HOME/.config/mybrowser/Singleton*
+# Cleanup stale singleton lock left over from an unclean container shutdown
+if ! pgrep -f "${BIN}" > /dev/null; then
+  rm -f /data/mybrowser/Singleton*
 fi
 
 # Wayland check

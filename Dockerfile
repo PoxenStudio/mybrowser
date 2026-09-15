@@ -17,7 +17,7 @@ COPY images/default_background.png /usr/share/backgrounds/mybrowser.png
 COPY webui /usr/share/selkies/mybrowser-webui
 COPY webui/icon.png /usr/share/selkies/www/
 COPY webui/favicon.ico /usr/share/selkies/www/
-COPY extensions /
+COPY extensions /extensions
 
 # title
 ENV TITLE=MyBrowser \
